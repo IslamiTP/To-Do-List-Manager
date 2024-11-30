@@ -3,15 +3,15 @@
 
     <!-- Window Style -->
     <Style TargetType="Window">
-        <Setter Property="Background" Value="{StaticResource WindowBackground}" />
-        <Setter Property="Foreground" Value="{StaticResource DefaultText}" />
+        <Setter Property="Background" Value="{StaticResource HoverBackground}" />
+        <Setter Property="Foreground" Value="{StaticResource WhiteText}" />
     </Style>
 
     <!-- ListView Style -->
     <Style TargetType="ListView">
-        <Setter Property="Background" Value="{StaticResource TaskListBackground}" />
-        <Setter Property="Foreground" Value="{StaticResource DefaultText}" />
-        <Setter Property="BorderBrush" Value="{StaticResource AccentDark}" />
+        <Setter Property="Background" Value="{StaticResource HoverBackground}" />
+        <Setter Property="Foreground" Value="{StaticResource WhiteText}" />
+        <Setter Property="BorderBrush" Value="{StaticResource HoverBackground}" />
         <Setter Property="BorderThickness" Value="1" />
     </Style>
     
@@ -23,12 +23,12 @@
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="Padding" Value="5 10"/>
-        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteText}"/>
     </Style>
     
     <!--Round Button-->
     <Style x:Key="RoundAccentButton" TargetType="Button">
-        <Setter Property="Background" Value="{StaticResource WindowBackground}"/>
+        <Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="BorderBrush" Value="Transparent" />
@@ -82,7 +82,7 @@
     <!--Task List Search Box-->
     <Style x:Key="TaskListSearchBox" TargetType="TextBox">
         <Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
-        <Setter Property="Foreground" Value="{StaticResource ButtonForeground}"/>
+        <Setter Property="Foreground" Value="{StaticResource WhiteText}"/>
         <Setter Property="BorderThickness" Value="1"/>
         <Setter Property="Padding" Value="20 0 50 0"/>
         <Setter Property="Cursor" Value="IBeam"/>
@@ -102,6 +102,14 @@
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
+    </Style>
+    
+    <!--Task Title-->
+    <Style x:Key="Title" TargetType="TextBlock">
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Foreground" Value="{StaticResource WhiteText}" />
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="FontSize" Value="20" />
     </Style>
 
     <!-- Button Style -->

@@ -29,5 +29,8 @@
     <!-- Text Foreground -->
     <SolidColorBrush x:Key="TextForeground" Color="#595959" />
     <!-- Almost white for readability -->
+    
+    <!--White Text-->
+    <SolidColorBrush x:Key="WhiteText" Color="White"/>
 
 </ResourceDictionary>

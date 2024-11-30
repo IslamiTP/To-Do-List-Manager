@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\App.xaml
-5-1510532763
+7-637732788
 
-101941250908
+121453556917
 13-1310406943
-Dictionaries\Colors.xaml;Dictionaries\Icons.xaml;Dictionaries\Styles.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;
+Dictionaries\Colors.xaml;Dictionaries\Icons.xaml;Dictionaries\Styles.xaml;Views\LoginView.xaml;Views\MainWindow.xaml;Views\NewTaskWindow.xaml;Views\TaskListItem.xaml;
 
 False
 

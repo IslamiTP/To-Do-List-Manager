@@ -34,5 +34,10 @@ namespace todolistmanagercsharp
         {
 
         }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

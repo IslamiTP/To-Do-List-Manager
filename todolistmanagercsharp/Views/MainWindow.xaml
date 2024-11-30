@@ -2,13 +2,21 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:vm="clr-namespace:todolistmanagercsharp.ViewModels"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:todolistmanagercsharp"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="To-Do List Manager"
         Height="600" Width="1200"
-        Background="{DynamicResource WindowBackground}">
+        MinHeight="550"   MinWidth="1200"
+        Background="{DynamicResource HoverBackground}">
+
+
+    <Window.DataContext>
+        <vm:MainWindowViewModel/>
+    </Window.DataContext>
+
     <Grid>
         <!-- Define column layout -->
         <Grid.ColumnDefinitions>
@@ -19,20 +27,15 @@
             <ColumnDefinition Width="150" />
         </Grid.ColumnDefinitions>
 
+        
         <!-- Left Sidebar -->
         <StackPanel Grid.Column="0" Background="{DynamicResource SidebarBackground}" Margin="5">
             <!-- Task Management Buttons -->
             <TextBlock Text="Task Actions" Margin="10,0,0,10" Foreground="{DynamicResource ButtonForeground}" FontWeight="Bold" />
-            <Button Content="Add Task"
-                    Command="{Binding AddTaskCommand}"
-                    Margin="5"
-                    Background="{DynamicResource ButtonBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" />
             <Button Content="Edit Task"
                     Command="{Binding EditTaskCommand}"
                     Margin="5"
-                    Background="{DynamicResource ButtonBackground}"
+                    Background="{DynamicResource WindowBackground}"
                     Foreground="{DynamicResource ButtonForeground}"
                     BorderBrush="{DynamicResource AccentColor}" />
             <Button Content="Delete Task"
@@ -85,6 +88,7 @@
                     BorderBrush="{DynamicResource AccentColor}" />
         </StackPanel>
 
+        
         <!--Task List Grid -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -98,18 +102,19 @@
                    VerticalAlignment="Center"
                    Padding="20 0 0 0"
                    IsHitTestVisible="False"/>
-
+            <!--Add New Task Button-->
             <Button Style="{StaticResource RoundAccentButton}"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Top"
                     Height="40"
                     Width="40"
-                    Margin="0,17,20,0">
+                    Margin="0,17,20,0"
+                    Command="{Binding IOpenNewWindow}">
                 <!--Icon-->
                 <Viewbox Width="25" 
                          Height="25" RenderTransformOrigin="0.5,0.942">
 
-                    <Path Data="{StaticResource NewTaskIcon}" Fill="{StaticResource ButtonForeground}"/>
+                    <Path Data="{StaticResource NewTaskIcon}" Fill="{StaticResource ButtonForeground}" RenderTransformOrigin="0.538,0.538"/>
                 </Viewbox>
             </Button>
 
@@ -132,16 +137,99 @@
                     VerticalAlignment="Center"
                     Margin="0 0 40 0"
                     Padding="6"
-                    Background="{StaticResource WindowBackground}"
+                    Background="Transparent"
                     BorderBrush="Transparent">
                 <Viewbox Width="25" Height="25">
                     <Path Data="{StaticResource SearchIcon}" Fill="White" Stretch="Fill" Width="15" />
                 </Viewbox>
             </Button>
+
+            <!--List View For Colum 1-->
+            <ListView Grid.Row="2"
+                      Background="#FF1E1E1E"
+                      Margin="0 20"
+                      BorderBrush="Transparent">
+            </ListView>
         </Grid>
 
- 
+        
+        <!--Task Viewer Field-->
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="200" />
+                <RowDefinition Height="1*" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
 
+            <!--Task Details-->
+            <Grid Margin="20 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="30" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Task Title"
+                           Style="{StaticResource Title}"
+                           VerticalAlignment="Center"/>
+
+
+                <!--Priorty Badge-->
+                <Border HorizontalAlignment="Right"
+                        VerticalAlignment="Center"
+                        Padding="20 5"
+                        CornerRadius="5"
+                        Background="DarkRed">
+                    <TextBlock Text="High"
+                               Foreground="{StaticResource WhiteText}"
+                               FontWeight="Normal"
+                               FontSize="16">
+                    </TextBlock>
+                </Border>
+
+                <!--Description Scroll Viewer-->
+                <ScrollViewer Grid.Row="1"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Disabled">
+                    <!--Description Text Field-->
+                    <TextBlock Text="Task Description will be displayed here..."
+                           FontSize="16"
+                           Margin="0 20"
+                           Foreground="{StaticResource WhiteText}"/>
+                </ScrollViewer>
+
+                <!--Due Date-->
+                <TextBlock Text="Due Date"
+                           Background="{StaticResource HoverBackground}"
+                           Padding="20 3"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Left"
+                           Grid.Row="2"
+                           Foreground="{StaticResource WhiteText}"/>
+            </Grid>
+
+            <Grid Grid.Row="1"
+                  Margin="0 20 0 0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Style="{StaticResource Title}"
+                           Text="Tasks Check List"
+                           VerticalAlignment="Center"
+                           Margin="20 0 0 0"/>
+                <!--Check Lists-->
+                    <ListView
+                        Background="Transparent"
+                        BorderThickness="0"
+                        Grid.Row="1">
+                    </ListView>
+            </Grid>
+
+        </Grid>
+
+        
         <!-- Logout Section -->
         <StackPanel Grid.Column="3" Background="{DynamicResource SidebarBackground}" VerticalAlignment="Top" Margin="5,5,-43,0" RenderTransformOrigin="0.5,0.5" Height="50">
             <StackPanel.RenderTransform>

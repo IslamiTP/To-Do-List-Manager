@@ -19,3 +19,8 @@ C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\
 C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\App.baml
 C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\Views\LoginView.baml
 C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\Views\LoginView.g.cs
+C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\Views\TaskListItem.g.cs
+C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\Views\TaskListItem.baml
+C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\Views\NewTaskWindow.g.cs
+C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\Views\NewTaskWindow.baml

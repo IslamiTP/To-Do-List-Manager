@@ -1,0 +1,57 @@
+﻿<UserControl x:Class="todolistmanagercsharp.Views.TaskListItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:todolistmanagercsharp.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="145" d:DesignWidth="435">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="38"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Text="Title"
+                   Style="{StaticResource Title}"
+                   Margin="20 0"
+                   VerticalAlignment="Center">
+        </TextBlock>
+
+
+
+        <!--Priority Badge-->
+        <Border CornerRadius="5" 
+                Background="DarkRed"
+                Padding="10 0"
+                HorizontalAlignment="Right"
+                Margin="8 8 20 8">
+            <TextBlock
+                Text="High"
+                Foreground="{StaticResource WhiteText}"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center">
+            </TextBlock>
+
+        </Border>
+
+
+        <!--Description-->
+        <TextBlock Text="This is where the task description will lie."
+                   TextWrapping="Wrap"
+                   Foreground="{StaticResource WhiteText}"
+                   Grid.Row="1"
+                   Margin="20 0">
+        </TextBlock>
+
+        <!--Due Date-->
+        <TextBlock Text="Due Date"
+                   Foreground="{StaticResource WhiteText}"
+                   Grid.Row="2"
+                   VerticalAlignment="Center"
+                   Margin="20 0">
+        </TextBlock>
+    </Grid>
+</UserControl>
