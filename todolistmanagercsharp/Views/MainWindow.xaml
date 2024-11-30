@@ -1,0 +1,163 @@
+﻿<Window x:Class="todolistmanagercsharp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:todolistmanagercsharp"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        Title="To-Do List Manager"
+        Height="600" Width="1200"
+        Background="{DynamicResource WindowBackground}">
+    <Grid>
+        <!-- Define column layout -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150" />
+            <!-- Increased width for sidebar -->
+            <ColumnDefinition Width="350" />
+            <ColumnDefinition Width="500" />
+            <ColumnDefinition Width="150" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Left Sidebar -->
+        <StackPanel Grid.Column="0" Background="{DynamicResource SidebarBackground}" Margin="5">
+            <!-- Task Management Buttons -->
+            <TextBlock Text="Task Actions" Margin="10,0,0,10" Foreground="{DynamicResource ButtonForeground}" FontWeight="Bold" />
+            <Button Content="Add Task"
+                    Command="{Binding AddTaskCommand}"
+                    Margin="5"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" />
+            <Button Content="Edit Task"
+                    Command="{Binding EditTaskCommand}"
+                    Margin="5"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" />
+            <Button Content="Delete Task"
+                    Command="{Binding DeleteTaskCommand}"
+                    Margin="5"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" />
+            <Button Content="Save Tasks"
+                    Command="{Binding SaveTasksCommand}"
+                    Margin="5"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" />
+
+            <!-- Divider -->
+            <Separator Margin="0,10,0,10" />
+
+            <!-- Filter Buttons -->
+            <TextBlock Text="Filters" Margin="10,0,0,10" Foreground="{DynamicResource ButtonForeground}" FontWeight="Bold" />
+            <Button Content="Filter by ID"
+                    Command="{Binding FilterByIdCommand}"
+                    Margin="5"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" />
+            <Button Content="Priority: Low"
+                    Command="{Binding FilterByLowPriorityCommand}"
+                    Margin="5"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" />
+            <Button Content="Priority: Medium"
+                    Command="{Binding FilterByMediumPriorityCommand}"
+                    Margin="5"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" />
+            <Button Content="Priority: High"
+                    Command="{Binding FilterByHighPriorityCommand}"
+                    Margin="5"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" />
+            <Button Content="Clear Filters"
+                    Command="{Binding ClearFilterCommand}"
+                    Margin="5"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" />
+        </StackPanel>
+
+        <!--Task List Grid -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="60" />
+                <RowDefinition Height="60" />
+                <RowDefinition Height="1*" />
+            </Grid.RowDefinitions>
+
+            <Label Style="{StaticResource Heading1}" 
+                   Content="Tasks" 
+                   VerticalAlignment="Center"
+                   Padding="20 0 0 0"
+                   IsHitTestVisible="False"/>
+
+            <Button Style="{StaticResource RoundAccentButton}"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Top"
+                    Height="40"
+                    Width="40"
+                    Margin="0,17,20,0">
+                <!--Icon-->
+                <Viewbox Width="25" 
+                         Height="25" RenderTransformOrigin="0.5,0.942">
+
+                    <Path Data="{StaticResource NewTaskIcon}" Fill="{StaticResource ButtonForeground}"/>
+                </Viewbox>
+            </Button>
+
+            <TextBox x:Name="TaskSearchBox"
+                     Style="{StaticResource TaskListSearchBox}"
+                     Grid.Row="1" 
+                     Margin="20,10,20,10"/>
+
+            <Label IsHitTestVisible="False"
+                   Content="Search Tasks..."
+                   Grid.Row="1"
+                   VerticalAlignment="Center"
+                   Margin="35 0 0 0"
+                   Foreground="{StaticResource ButtonForeground}"
+                   Visibility="{Binding Text.IsEmpty, ElementName=TaskSearchBox, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+
+            <Button Style="{StaticResource SearchButton}"
+                    Grid.Row="1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"
+                    Margin="0 0 40 0"
+                    Padding="6"
+                    Background="{StaticResource WindowBackground}"
+                    BorderBrush="Transparent">
+                <Viewbox Width="25" Height="25">
+                    <Path Data="{StaticResource SearchIcon}" Fill="White" Stretch="Fill" Width="15" />
+                </Viewbox>
+            </Button>
+        </Grid>
+
+ 
+
+        <!-- Logout Section -->
+        <StackPanel Grid.Column="3" Background="{DynamicResource SidebarBackground}" VerticalAlignment="Top" Margin="5,5,-43,0" RenderTransformOrigin="0.5,0.5" Height="50">
+            <StackPanel.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.572"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </StackPanel.RenderTransform>
+            <Button Content="Logout"
+                    Command="{Binding LogoutCommand}"
+                    Margin="10"
+                    Background="{DynamicResource ButtonBackground}"
+                    Foreground="{DynamicResource ButtonForeground}"
+                    BorderBrush="{DynamicResource AccentColor}" Width="163" />
+        </StackPanel>
+    </Grid>
+</Window>
