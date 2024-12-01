@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,45 +12,13 @@ namespace todolistmanagercsharp.Models
         public int Id { get; set; }
         public string Title { get; set; }
         public string Description { get; set; }
-        public string Status { get; set; } // e.g., "Not Started", "In Progress", "Completed"
         public DateTime Duedate { get; set; }
-        public string Priority { get; set; } // e.g., "Low", "Medium", "High"
+        public string TaskState { get; set; } // e.g., "Not Started", "In Progress", "Completed", or "None"
+        public string TaskPriority { get; set; } // e.g., "Low", "Medium", "High", or "None"
+
         public string Recurrence { get; set; } // e.g., "None", "Daily", "Weekly", "Monthly"
-        
-        public TaskState TaskState { get; set; }
-        public TaskPriority TaskPriority { get; set; }
+       
 
-    }
-
-    public enum TaskState
-    {   
-        // <summary>
-        // Task Has Not been Started
-        // </summary>
-        NotStarted,
-        // <summary>
-        // Task is inprogress
-        // </summary>
-        InProgress,
-        // <summary>
-        // Task is complete
-        // </summary>
-        Complete
-    }
-
-    public enum TaskPriority
-    {
-        // <summary>
-        // Task is Low priority
-        // </summary>
-        Low,
-        // <summary>
-        // Task is Medium priority
-        // </summary>
-        Medium,
-        // <summary>
-        // Task is High Prioirty
-        // </summary>
-        High
+        public ObservableCollection<TaskChecklist> TaskChecklist { get; set; }
     }
 }

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:todolistmanagercsharp.Views"
         mc:Ignorable="d"
         Background="{DynamicResource HoverBackground}"        
-        Title="Add New Task" Height="450" Width="800"
+        Title="Add New Task" Height="500" Width="800"
         WindowStartupLocation="CenterScreen">
 
     <Grid Margin="20">
@@ -21,8 +21,11 @@
 
         <!-- Header -->
         <Border Grid.Row="0" Background="{DynamicResource SidebarBackground}" Padding="10" CornerRadius="5">
+            <Border.Effect>
+                <DropShadowEffect/>
+            </Border.Effect>
             <TextBlock Text="Add New Task"
-            Foreground="{DynamicResource ButtonForeground}"
+                       Foreground="{DynamicResource ButtonForeground}"
                        VerticalAlignment="Center" />
         </Border>
 
@@ -30,9 +33,17 @@
         <Grid Grid.Row="1" Margin="0,20,0,20">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
+                <!-- Task Title -->
                 <RowDefinition Height="Auto" />
+                <!-- Priority -->
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="1*" />
+                <!-- Due Date -->
+                <RowDefinition Height="Auto" />
+                <!-- Status -->
+                <RowDefinition Height="Auto" />
+                <!-- Recurrence -->
+                <RowDefinition Height="*" />
+                <!-- Description -->
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto" />
@@ -42,29 +53,29 @@
             <!-- Task Title -->
             <TextBlock Grid.Row="0" Grid.Column="0"
                        Text="Task Title:"
-                       Margin="0,0,10,10"
-                       VerticalAlignment="Center"
+                       Margin="0,2,10,0"
+                       VerticalAlignment="Top"
                        Foreground="{DynamicResource ButtonForeground}" />
-            
             <TextBox Grid.Row="0" Grid.Column="1"
                      Style="{StaticResource TaskListSearchBox}"
                      Margin="10,0,0,11"
                      MaxLength="100"
-                     Background="{DynamicResource WindowBackground}"
-                     Foreground="{DynamicResource ButtonForeground}" />
+                     Background="White"
+                     Foreground="{DynamicResource ListBackground}" 
+                     Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" />
 
             <!-- Priority -->
             <TextBlock Grid.Row="1" Grid.Column="0"
                        Text="Priority:"
-                       Margin="0,0,10,10"
-                       VerticalAlignment="Center"
+                       Margin="0,3,10,0"
+                       VerticalAlignment="Top"
                        Foreground="{DynamicResource ButtonForeground}" />
-            <ComboBox Text="Priority.."
-                      Grid.Row="1" 
-                      Grid.Column="1"
-                      Margin="10,0,0,10"
+            <ComboBox Grid.Row="1" Grid.Column="1"
+                      Margin="10,5,0,5"
                       Background="{DynamicResource HoverBackground}"
-                      Foreground="{DynamicResource HoverBackground}">
+                      Foreground="{DynamicResource HoverBackground}"
+                      SelectedItem="{Binding TaskPriority, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBoxItem Content="None" />
                 <ComboBoxItem Content="Low" />
                 <ComboBoxItem Content="Medium" />
                 <ComboBoxItem Content="High" />
@@ -73,35 +84,65 @@
             <!-- Due Date -->
             <TextBlock Grid.Row="2" Grid.Column="0"
                        Text="Due Date:"
-                       Margin="0,0,10,10"
-                       VerticalAlignment="Center"
-                       Foreground="{DynamicResource ButtonForeground}" />
-            <DatePicker Grid.Row="2" Grid.Column="1"
-                        Margin="10,0,0,10"
-                        Background="{DynamicResource HoverBackground}"
-                        Foreground="{DynamicResource HoverBackground}" />
-
-            <!-- Description -->
-            <TextBlock Grid.Row="3" Grid.Column="0"
-                       Text="Description:"
+                       Margin="0,4,10,0"
                        VerticalAlignment="Top"
                        Foreground="{DynamicResource ButtonForeground}" />
-            <TextBox Grid.Row="3" Grid.Column="1"
-                     Margin="10,9,2,48"
+            <DatePicker Grid.Row="2" Grid.Column="1"
+                        Margin="10,5,0,5"
+                        BorderBrush="Transparent"
+                        Background="{DynamicResource HoverBackground}"
+                        Foreground="{DynamicResource HoverBackground}"
+                        SelectedDate="{Binding DueDate, UpdateSourceTrigger=PropertyChanged}" />
+
+            <!-- Status -->
+            <TextBlock Grid.Row="3" Grid.Column="0"
+                       Text="Status:"
+                       Margin="0,4,10,0"
+                       VerticalAlignment="Top"
+                       Foreground="{DynamicResource ButtonForeground}" />
+            <ComboBox Grid.Row="3" Grid.Column="1"
+                      Margin="10,5,0,10"
+                      Background="{StaticResource WindowBackground}"
+                      Foreground="{DynamicResource ListBackground}"
+                      SelectedItem="{Binding TaskState, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBoxItem Content="None" />
+                <ComboBoxItem Content="Pending" />
+                <ComboBoxItem Content="In Progress" />
+                <ComboBoxItem Content="Completed" />
+            </ComboBox>
+
+            <!-- Recurrence -->
+            <TextBlock Grid.Row="4" Grid.Column="0"
+                       Text="Recurrence:"
+                       Margin="0,4,10,0"
+                       VerticalAlignment="Top"
+                       Foreground="{DynamicResource ButtonForeground}" />
+            <ComboBox Grid.Row="4" Grid.Column="1"
+                      Margin="10,5,0,10"
+                      Background="{StaticResource WindowBackground}"
+                      Foreground="{DynamicResource ListBackground}"
+                      SelectedItem="{Binding Recurrence, UpdateSourceTrigger=PropertyChanged}">
+                <ComboBoxItem Content="None" />
+                <ComboBoxItem Content="Daily" />
+                <ComboBoxItem Content="Weekly" />
+                <ComboBoxItem Content="Monthly" />
+            </ComboBox>
+
+            <!-- Description -->
+            <TextBlock Grid.Row="5" Grid.Column="0"
+                       Text="Description:"
+                       Margin="0,4,10,0"
+                       VerticalAlignment="Top"
+                       Foreground="{DynamicResource ButtonForeground}" />
+            <TextBox Grid.Row="5" Grid.Column="1"
+                     Margin="10,5,0,10"
                      TextWrapping="Wrap"
                      AcceptsReturn="True"
+                     MaxLength="2000"                     
                      VerticalScrollBarVisibility="Auto"
-                     Background="{DynamicResource WindowBackground}"
-                     Foreground="{DynamicResource ButtonForeground}" RenderTransformOrigin="0.5,0.5" >
-                <TextBox.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="0.201"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </TextBox.RenderTransform>
-            </TextBox>
+                     Background="White"
+                     Foreground="{DynamicResource ListBackground}"
+                     Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" />
         </Grid>
 
         <!-- Footer -->
@@ -112,14 +153,23 @@
                     Background="{DynamicResource ButtonBackground}"
                     Foreground="{DynamicResource ButtonForeground}"
                     BorderBrush="{DynamicResource AccentColor}"
-                    Width="100" />
-            <Button Content="Save Task"
-                    Command="{Binding SaveTaskCommand}"
+                    Width="100">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
+
+            <Button Content="Add Task"
                     Padding="10,5"
                     Background="{DynamicResource AccentColor}"
                     Foreground="{DynamicResource WhiteText}"
                     BorderBrush="{DynamicResource AccentColor}"
-                    Width="100" />
+                    Width="100"
+                    Command="{Binding IAddNewTask}">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

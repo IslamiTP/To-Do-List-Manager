@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using todolistmanagercsharp.Models;
 
 namespace todolistmanagercsharp.DataService
 {
@@ -13,7 +13,7 @@ namespace todolistmanagercsharp.DataService
     {
         private readonly string _filePath;
         private readonly string folderName = "todolistmanagercsharp";
-        private readonly string fileName = "task.json";
+        private readonly string fileName = "tasks.json";
 
         public TaskDataService()
         {
@@ -32,10 +32,10 @@ namespace todolistmanagercsharp.DataService
 
             _filePath = Path.Combine(dataFolder, fileName);
 
-            InitializerFile();
+            InitializeFile();
         }
 
-        private void InitializerFile()
+        private void InitializeFile()
         {
             if (!File.Exists(_filePath))
             {
@@ -48,5 +48,62 @@ namespace todolistmanagercsharp.DataService
         }
 
 
+
+        public List<Task> LoadTasks()
+        {
+            string fileContent = File.ReadAllText(_filePath);
+            return JsonConvert.DeserializeObject<List<Task>>(fileContent);
+        }
+
+        public void SaveTasks(List<Task> tasks)
+        {
+            string json = JsonConvert.SerializeObject(tasks, Formatting.Indented);
+            File.WriteAllText(_filePath, json);
+        }
+
+        public void AddTask(Task newTask)
+        {
+            newTask.Id = GenTaskId();
+
+            // Load tasks
+            var task = LoadTasks();
+            // adding new task
+            task.Add(newTask);
+            SaveTasks(task);
+        }
+
+        public void UpdateTask(Task updateTask)
+        {
+            var tasks = LoadTasks();
+            var taskIndex = tasks.FindIndex(t => t.Id == updateTask.Id);
+
+            if (taskIndex != -1)
+            {
+                tasks[taskIndex] = updateTask;
+                SaveTasks(tasks);
+            }
+        }
+
+        public void DeleteTask(int taskId)
+        {
+            // loading json tasks
+            var tasks = LoadTasks();
+            // checks tasks
+            tasks.RemoveAll(t => t.Id == taskId);
+            SaveTasks(tasks);
+        }
+
+        public int GenTaskId()
+        {
+            var tasks = LoadTasks();
+
+            if (!tasks.Any())
+            {
+                return 1;
+            }
+
+            int maxId = tasks.Max(t => t.Id);
+            return maxId + 1;
+        }
     }
 }

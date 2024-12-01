@@ -5,8 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         Title="Login"
-        Height="450"
-        Width="800"
+        Height="480"
+        Width="820"
+        MinHeight="480"
+        MinWidth="820"
         WindowStartupLocation="CenterScreen"
         Background="{DynamicResource WindowBackground}">
     <Grid>
@@ -22,11 +24,15 @@
                    VerticalAlignment="Center"
                    FontSize="24"
                    FontWeight="Bold"
-                   Foreground="{DynamicResource TextForeground}" Height="32" Width="298" />
+                   Foreground="{DynamicResource WhiteText}" Height="32" Width="298" >
+            <TextBlock.Effect>
+                <DropShadowEffect/>
+            </TextBlock.Effect>
+        </TextBlock>
 
         <!-- Login Form -->
         <Border Grid.Row="1"
-                Margin="50,10,50,50"
+                Margin="50,10,62,27"
                 CornerRadius="10"
                 Background="{DynamicResource SidebarBackground}"
                 Padding="20">
@@ -34,24 +40,24 @@
                 <!-- Username -->
                 <TextBlock Text="Username:"
                            Margin="0,0,0,5"
-                           Foreground="{DynamicResource TextForeground}" />
+                           Foreground="{DynamicResource WhiteText}" />
                 <TextBox x:Name="UsernameTextBox"
                          Width="300"
                          Height="30"
                          Background="{DynamicResource ListBackground}"
-                         Foreground="{DynamicResource TextForeground}"
+                         Foreground="{DynamicResource WhiteText}"
                          BorderBrush="{DynamicResource AccentColor}"
                          BorderThickness="1" />
 
                 <!-- Password -->
                 <TextBlock Text="Password:"
                            Margin="0,20,0,5"
-                           Foreground="{DynamicResource TextForeground}" />
+                           Foreground="{DynamicResource WhiteText}" />
                 <PasswordBox x:Name="PasswordBox"
                              Width="300"
                              Height="30"
                              Background="{DynamicResource ListBackground}"
-                             Foreground="{DynamicResource TextForeground}"
+                             Foreground="{DynamicResource WhiteText}"
                              BorderBrush="{DynamicResource AccentColor}"
                              BorderThickness="1" />
 
@@ -65,12 +71,16 @@
                         Foreground="{DynamicResource ButtonForeground}"
                         BorderBrush="{DynamicResource AccentColor}"
                         FontWeight="Bold"
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Center" >
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
 
                 <!-- Register Option -->
                 <TextBlock Text="Don't have an account?"
                            Margin="0,20,0,5"
-                           Foreground="{DynamicResource TextForeground}"
+                           Foreground="{DynamicResource WhiteText}"
                            HorizontalAlignment="Center" />
                 <Button Content="Register"
                         Command="{Binding RegisterCommand}"
@@ -80,7 +90,11 @@
                         Foreground="{DynamicResource ButtonForeground}"
                         BorderBrush="{DynamicResource AccentColor}"
                         FontWeight="Bold"
-                        HorizontalAlignment="Center" />
+                        HorizontalAlignment="Center" >
+                    <Button.Effect>
+                        <DropShadowEffect/>
+                    </Button.Effect>
+                </Button>
             </StackPanel>
         </Border>
     </Grid>

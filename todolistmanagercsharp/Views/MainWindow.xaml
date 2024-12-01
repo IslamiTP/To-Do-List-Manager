@@ -27,7 +27,7 @@
             <ColumnDefinition Width="150" />
         </Grid.ColumnDefinitions>
 
-        
+
         <!-- Left Sidebar -->
         <StackPanel Grid.Column="0" Background="{DynamicResource SidebarBackground}" Margin="5">
             <!-- Task Management Buttons -->
@@ -40,12 +40,6 @@
                     BorderBrush="{DynamicResource AccentColor}" />
             <Button Content="Delete Task"
                     Command="{Binding DeleteTaskCommand}"
-                    Margin="5"
-                    Background="{DynamicResource ButtonBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" />
-            <Button Content="Save Tasks"
-                    Command="{Binding SaveTasksCommand}"
                     Margin="5"
                     Background="{DynamicResource ButtonBackground}"
                     Foreground="{DynamicResource ButtonForeground}"
@@ -88,7 +82,7 @@
                     BorderBrush="{DynamicResource AccentColor}" />
         </StackPanel>
 
-        
+
         <!--Task List Grid -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
@@ -110,6 +104,12 @@
                     Width="40"
                     Margin="0,17,20,0"
                     Command="{Binding IOpenNewWindow}">
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+                <Button.DataContext>
+                    <vm:MainWindowViewModel/>
+                </Button.DataContext>
                 <!--Icon-->
                 <Viewbox Width="25" 
                          Height="25" RenderTransformOrigin="0.5,0.942">
@@ -121,7 +121,9 @@
             <TextBox x:Name="TaskSearchBox"
                      Style="{StaticResource TaskListSearchBox}"
                      Grid.Row="1" 
-                     Margin="20,10,20,10"/>
+                     Margin="20,10,20,10"
+                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
+
 
             <Label IsHitTestVisible="False"
                    Content="Search Tasks..."
@@ -146,13 +148,36 @@
 
             <!--List View For Colum 1-->
             <ListView Grid.Row="2"
+                      ItemsSource="{Binding FilteredTasks}" 
+                      SelectedItem="{Binding SelectedTask}" 
                       Background="#FF1E1E1E"
                       Margin="0 20"
-                      BorderBrush="Transparent">
+                      BorderBrush="Transparent"
+                      Foreground="{StaticResource ButtonForeground}">
+                <ListView.View>
+                    <GridView>
+                        <!-- Task ID -->
+                        <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
+                        <!-- Task Title -->
+                        <GridViewColumn Header="Title" Width="200" DisplayMemberBinding="{Binding Title}" />
+                        <!-- Task Priority -->
+                        <GridViewColumn Header="Priority" Width="100" DisplayMemberBinding="{Binding TaskPriority}" />
+                        <!-- Task Status -->
+                        <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding TaskState}" />
+                        <!-- Task Due Date -->
+                        <GridViewColumn Header="Due Date" Width="150">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Duedate, StringFormat='{}{0:MM/dd/yyyy}'}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
             </ListView>
         </Grid>
 
-        
+
         <!--Task Viewer Field-->
         <Grid Grid.Column="2">
             <Grid.RowDefinitions>
@@ -169,9 +194,21 @@
                     <RowDefinition Height="30" />
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="Task Title"
+                <!-- Task ID -->
+                <TextBlock Grid.Row="2" 
+                           Text="{Binding SelectedTask.Id, StringFormat='Task ID: {0}'}" 
+                           VerticalAlignment="Center" 
+                           FontWeight="Bold"
+                           Foreground="{StaticResource ButtonForeground}" Height="20" Margin="387,0,0,0" />
+
+                <!--Task Title-->
+                <TextBlock Text="{Binding SelectedTask.Title}"
                            Style="{StaticResource Title}"
-                           VerticalAlignment="Center"/>
+                           VerticalAlignment="Center">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
 
 
                 <!--Priorty Badge-->
@@ -180,32 +217,46 @@
                         Padding="20 5"
                         CornerRadius="5"
                         Background="DarkRed">
-                    <TextBlock Text="High"
+                    <Border.Effect>
+                        <DropShadowEffect/>
+                    </Border.Effect>
+                    <TextBlock Text="{Binding SelectedTask.TaskPriority}"
                                Foreground="{StaticResource WhiteText}"
                                FontWeight="Normal"
                                FontSize="16">
                     </TextBlock>
                 </Border>
 
+                <!-- Recurrence -->
+                <TextBlock Grid.Row="3" 
+                           Text="{Binding SelectedTask.Recurrence, StringFormat='Recurrence: {0}'}" 
+                           VerticalAlignment="Center" 
+                           Foreground="{StaticResource ButtonForeground}" />
+
                 <!--Description Scroll Viewer-->
                 <ScrollViewer Grid.Row="1"
                               VerticalScrollBarVisibility="Auto"
-                              HorizontalScrollBarVisibility="Disabled">
+                              HorizontalScrollBarVisibility="Disabled" Margin="-10,0,10,0">
                     <!--Description Text Field-->
-                    <TextBlock Text="Task Description will be displayed here..."
-                           FontSize="16"
-                           Margin="0 20"
-                           Foreground="{StaticResource WhiteText}"/>
+                    <TextBlock Text="{Binding SelectedTask.Description}"
+                               FontSize="16"
+                               Margin="0 20"
+                               Foreground="{StaticResource WhiteText}"
+                               TextWrapping="Wrap" Height="62" Width="398"/>
                 </ScrollViewer>
 
                 <!--Due Date-->
-                <TextBlock Text="Due Date"
+                <TextBlock Text="{Binding SelectedTask.Duedate, StringFormat='Due: {0:MM/dd/yyyy}'}"
                            Background="{StaticResource HoverBackground}"
                            Padding="20 3"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Left"
                            Grid.Row="2"
-                           Foreground="{StaticResource WhiteText}"/>
+                           Foreground="{StaticResource WhiteText}">
+                    <TextBlock.Effect>
+                        <DropShadowEffect/>
+                    </TextBlock.Effect>
+                </TextBlock>
             </Grid>
 
             <Grid Grid.Row="1"
@@ -220,18 +271,21 @@
                            VerticalAlignment="Center"
                            Margin="20 0 0 0"/>
                 <!--Check Lists-->
-                    <ListView
+                <ListView
                         Background="Transparent"
                         BorderThickness="0"
                         Grid.Row="1">
-                    </ListView>
+                </ListView>
             </Grid>
 
         </Grid>
 
-        
+
         <!-- Logout Section -->
         <StackPanel Grid.Column="3" Background="{DynamicResource SidebarBackground}" VerticalAlignment="Top" Margin="5,5,-43,0" RenderTransformOrigin="0.5,0.5" Height="50">
+            <StackPanel.Effect>
+                <DropShadowEffect/>
+            </StackPanel.Effect>
             <StackPanel.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -245,7 +299,11 @@
                     Margin="10"
                     Background="{DynamicResource ButtonBackground}"
                     Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" Width="163" />
+                    BorderBrush="{DynamicResource AccentColor}" Width="163" >
+                <Button.Effect>
+                    <DropShadowEffect/>
+                </Button.Effect>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>
