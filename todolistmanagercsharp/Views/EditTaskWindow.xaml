@@ -1,0 +1,163 @@
+﻿<Window x:Class="todolistmanagercsharp.Views.EditTaskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Edit Task" Height="450" Width="800" WindowStartupLocation="CenterScreen"
+        Background="{DynamicResource HoverBackground}">
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Grid.Row="0" Background="{DynamicResource SidebarBackground}" Padding="10" CornerRadius="5">
+            <TextBlock Text="Edit Task" Foreground="{DynamicResource ButtonForeground}" VerticalAlignment="Center" FontSize="16" FontWeight="Bold"/>
+        </Border>
+
+        <!-- Form Content -->
+        <Grid Grid.Row="1" Margin="0,20,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            
+            <!-- Task Title -->
+            <TextBlock  Grid.Row="0"                         
+                        Grid.Column="0" 
+                        Text="Task Title:" 
+                        Foreground="{DynamicResource ButtonForeground}" 
+                        Margin="0,0,10,5" 
+                        VerticalAlignment="Center" />
+            <TextBox Grid.Row="0" 
+                     Grid.Column="1" 
+                     Text="{Binding Title, UpdateSourceTrigger=PropertyChanged}" 
+                     Margin="0,0,0,5" 
+            />
+
+            
+            
+            <!-- Priority -->
+            <TextBlock Grid.Row="1" 
+                       Grid.Column="0" 
+                       Text="Priority:" 
+                       Foreground="{DynamicResource ButtonForeground}" 
+                       Margin="0,0,10,5" 
+                       VerticalAlignment="Center" />
+
+            <ComboBox Grid.Row="1" 
+                      Grid.Column="1" 
+                      SelectedItem="{Binding TaskPriority,UpdateSourceTrigger=PropertyChanged}" 
+                      Margin="0,0,0,5">
+                <ComboBox.ItemsSource>
+                    <x:Array Type="sys:String" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <sys:String>Low</sys:String>
+                        <sys:String>Medium</sys:String>
+                        <sys:String>High</sys:String>
+                    </x:Array>
+                </ComboBox.ItemsSource>
+            </ComboBox>
+            
+            
+
+            <!-- Status -->
+            <TextBlock Grid.Row="2" 
+                       Grid.Column="0" 
+                       Text="Status:" 
+                       Foreground="{DynamicResource ButtonForeground}" 
+                       Margin="0,0,10,5" 
+                       VerticalAlignment="Center" />
+            <ComboBox Grid.Row="2" 
+                      Grid.Column="1" 
+                      SelectedItem="{Binding TaskState,UpdateSourceTrigger=PropertyChanged}" 
+                      Margin="0,0,0,5">
+                <ComboBox.ItemsSource>
+                    <x:Array Type="sys:String" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <sys:String>Not Started</sys:String>
+                        <sys:String>In Progress</sys:String>
+                        <sys:String>Completed</sys:String>
+                    </x:Array>
+                </ComboBox.ItemsSource>
+            </ComboBox>
+            
+            
+
+            <!-- Due Date -->
+            <TextBlock Grid.Row="3" 
+                       Grid.Column="0" 
+                       Text="Due Date:" 
+                       Foreground="{DynamicResource ButtonForeground}" 
+                       Margin="0,0,10,5" 
+                       VerticalAlignment="Center" />
+            <DatePicker Grid.Row="3" 
+                        Grid.Column="1" 
+                        SelectedDate="{Binding Duedate,UpdateSourceTrigger=PropertyChanged}" 
+                        Margin="0,0,0,5" />
+
+            
+            
+            <!-- Recurrence -->
+            <TextBlock Grid.Row="4" 
+                       Grid.Column="0" 
+                       Text="Recurrence:" 
+                       Foreground="{DynamicResource ButtonForeground}" 
+                       Margin="0,0,10,5" 
+                       VerticalAlignment="Center" />
+            <ComboBox Grid.Row="4" 
+                      Grid.Column="1" 
+                      SelectedItem="{Binding Recurrence, UpdateSourceTrigger=PropertyChanged}" 
+                      Margin="0,0,0,5">
+                <ComboBox.ItemsSource>
+                    <x:Array Type="sys:String" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+                        <sys:String>None</sys:String>
+                        <sys:String>Daily</sys:String>
+                        <sys:String>Weekly</sys:String>
+                        <sys:String>Monthly</sys:String>
+                    </x:Array>
+                </ComboBox.ItemsSource>
+            </ComboBox>
+
+            
+            <!-- Description -->
+            <TextBlock Grid.Row="5" 
+                       Grid.Column="0" 
+                       Text="Description:" 
+                       Foreground="{DynamicResource ButtonForeground}" 
+                       Margin="0,0,10,5" 
+                       VerticalAlignment="Top" />
+            <TextBox Grid.Row="5" 
+                     Grid.Column="1" 
+                     Text="{Binding Description, UpdateSourceTrigger=PropertyChanged}" 
+                     TextWrapping="Wrap" 
+                     AcceptsReturn="True" 
+                     Height="100" 
+                     VerticalScrollBarVisibility="Auto" 
+                     Margin="0,0,0,5" 
+            />
+        </Grid>
+
+        <!-- Footer -->
+        <StackPanel Grid.Row="2" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Right" 
+                    Margin="0,10,0,0">
+            <Button Content="Cancel" 
+                    Command="{Binding CloseWindowCommand}" 
+                    Margin="5,0" />
+            
+            <Button Content="Save Changes" 
+                    Command="{Binding SaveEditedTaskCommand}" 
+                    Margin="5,0" />
+        </StackPanel>
+    </Grid>
+</Window>

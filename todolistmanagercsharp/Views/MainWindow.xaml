@@ -35,15 +35,17 @@
             <Button Content="Edit Task"
                     Command="{Binding EditTaskCommand}"
                     Margin="5"
-                    Background="{DynamicResource WindowBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" />
+                    Background="{DynamicResource HoverBackground}"
+                    Foreground="{DynamicResource WhiteText}"
+                    BorderBrush="{DynamicResource AccentColor}" 
+                    IsEnabled="{Binding SelectedTask, Converter={StaticResource NullToBooleanConverter}}" />
             <Button Content="Delete Task"
                     Command="{Binding DeleteTaskCommand}"
                     Margin="5"
-                    Background="{DynamicResource ButtonBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" />
+                    Background="{DynamicResource HoverBackground}"
+                    Foreground="{DynamicResource WhiteText}"
+                    BorderBrush="{DynamicResource AccentColor}" 
+                    IsEnabled="{Binding SelectedTask, Converter={StaticResource NullToBooleanConverter}}" />
 
             <!-- Divider -->
             <Separator Margin="0,10,0,10" />
@@ -53,31 +55,31 @@
             <Button Content="Filter by ID"
                     Command="{Binding FilterByIdCommand}"
                     Margin="5"
-                    Background="{DynamicResource ButtonBackground}"
+                    Background="{DynamicResource HoverBackground}"
                     Foreground="{DynamicResource ButtonForeground}"
                     BorderBrush="{DynamicResource AccentColor}" />
             <Button Content="Priority: Low"
                     Command="{Binding FilterByLowPriorityCommand}"
                     Margin="5"
-                    Background="{DynamicResource ButtonBackground}"
+                    Background="{DynamicResource HoverBackground}"
                     Foreground="{DynamicResource ButtonForeground}"
                     BorderBrush="{DynamicResource AccentColor}" />
             <Button Content="Priority: Medium"
                     Command="{Binding FilterByMediumPriorityCommand}"
                     Margin="5"
-                    Background="{DynamicResource ButtonBackground}"
+                    Background="{DynamicResource HoverBackground}"
                     Foreground="{DynamicResource ButtonForeground}"
                     BorderBrush="{DynamicResource AccentColor}" />
             <Button Content="Priority: High"
                     Command="{Binding FilterByHighPriorityCommand}"
                     Margin="5"
-                    Background="{DynamicResource ButtonBackground}"
+                    Background="{DynamicResource HoverBackground}"
                     Foreground="{DynamicResource ButtonForeground}"
                     BorderBrush="{DynamicResource AccentColor}" />
             <Button Content="Clear Filters"
                     Command="{Binding ClearFilterCommand}"
                     Margin="5"
-                    Background="{DynamicResource ButtonBackground}"
+                    Background="{DynamicResource HoverBackground}"
                     Foreground="{DynamicResource ButtonForeground}"
                     BorderBrush="{DynamicResource AccentColor}" />
         </StackPanel>
@@ -150,22 +152,22 @@
             <ListView Grid.Row="2"
                       ItemsSource="{Binding FilteredTasks}" 
                       SelectedItem="{Binding SelectedTask}" 
-                      Background="#FF1E1E1E"
+                      Background="{DynamicResource HoverBackground}"
                       Margin="0 20"
-                      BorderBrush="Transparent"
+                      BorderBrush="{DynamicResource WhiteText}"
                       Foreground="{StaticResource ButtonForeground}">
                 <ListView.View>
                     <GridView>
                         <!-- Task ID -->
-                        <GridViewColumn Header="ID" Width="50" DisplayMemberBinding="{Binding Id}" />
+                        <GridViewColumn Header="ID" Width="20" DisplayMemberBinding="{Binding Id}" />
                         <!-- Task Title -->
-                        <GridViewColumn Header="Title" Width="200" DisplayMemberBinding="{Binding Title}" />
+                        <GridViewColumn Header="Title" Width="100" DisplayMemberBinding="{Binding Title}" />
                         <!-- Task Priority -->
-                        <GridViewColumn Header="Priority" Width="100" DisplayMemberBinding="{Binding TaskPriority}" />
+                        <GridViewColumn Header="Priority" Width="50" DisplayMemberBinding="{Binding TaskPriority}" />
                         <!-- Task Status -->
-                        <GridViewColumn Header="Status" Width="100" DisplayMemberBinding="{Binding TaskState}" />
+                        <GridViewColumn Header="Status" Width="50" DisplayMemberBinding="{Binding TaskState}" />
                         <!-- Task Due Date -->
-                        <GridViewColumn Header="Due Date" Width="150">
+                        <GridViewColumn Header="Due Date" Width="100">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding Duedate, StringFormat='{}{0:MM/dd/yyyy}'}" />

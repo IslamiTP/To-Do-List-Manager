@@ -27,3 +27,5 @@ C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\
 C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\bin\Debug\Newtonsoft.Json.dll
 C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\bin\Debug\Newtonsoft.Json.xml
 C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\todolist.90E60F81.Up2Date
+C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\Views\EditTaskWindow.baml
+C:\Users\endri\Documents\GitHub\todolistmanagercsharp\todolistmanagercsharp\obj\Debug\Views\EditTaskWindow.g.cs
