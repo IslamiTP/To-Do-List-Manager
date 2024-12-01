@@ -7,23 +7,23 @@
       "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\viewmodels\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\viewmodels\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\viewmodels\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\views\\newtaskwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\views\\newtaskwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\views\\newtaskwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\dataservice\\taskdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\dataservice\\taskdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\dataservice\\taskdataservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\models\\task.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -54,8 +54,7 @@
               "RelativeToolTip": "todolistmanagercsharp\\Models\\Task.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T04:06:58.679Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T04:06:58.679Z"
             },
             {
               "$type": "Document",
@@ -67,8 +66,7 @@
               "RelativeToolTip": "todolistmanagercsharp\\DataService\\TaskDataService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T04:00:58.676Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T04:00:58.676Z"
             },
             {
               "$type": "Document",
@@ -79,8 +77,7 @@
               "ToolTip": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\Views\\NewTaskWindow.xaml",
               "RelativeToolTip": "todolistmanagercsharp\\Views\\NewTaskWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-01T02:59:25.962Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T02:59:25.962Z"
             },
             {
               "$type": "Document",
@@ -104,8 +101,7 @@
               "RelativeToolTip": "todolistmanagercsharp\\ViewModels\\TaskViewModel.cs",
               "ViewState": "AgIAADcAAAAAAAAAAAAEwEsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T02:34:12.266Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T02:34:12.266Z"
             },
             {
               "$type": "Document",
@@ -117,8 +113,7 @@
               "RelativeToolTip": "todolistmanagercsharp\\Views\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAtAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-01T02:32:34.201Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-01T02:32:34.201Z"
             }
           ]
         }
