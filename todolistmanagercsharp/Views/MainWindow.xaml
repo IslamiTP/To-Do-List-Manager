@@ -14,7 +14,7 @@
 
 
     <Window.DataContext>
-        <vm:MainWindowViewModel/>
+        <vm:MainWindowViewModel />
     </Window.DataContext>
 
     <Grid>
@@ -52,36 +52,34 @@
 
             <!-- Filter Buttons -->
             <TextBlock Text="Filters" Margin="10,0,0,10" Foreground="{DynamicResource ButtonForeground}" FontWeight="Bold" />
-            <Button Content="Filter by ID"
-                    Command="{Binding FilterByIdCommand}"
-                    Margin="5"
-                    Background="{DynamicResource HoverBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" />
+            <!-- Filter Buttons -->
             <Button Content="Priority: Low"
-                    Command="{Binding FilterByLowPriorityCommand}"
-                    Margin="5"
-                    Background="{DynamicResource HoverBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" />
+                Command="{Binding FilterByLowPriorityCommand}"
+                Margin="5"
+                Background="{DynamicResource ButtonBackground}"
+                Foreground="{DynamicResource ButtonForeground}"
+                BorderBrush="{DynamicResource AccentColor}" />
+
             <Button Content="Priority: Medium"
-                    Command="{Binding FilterByMediumPriorityCommand}"
-                    Margin="5"
-                    Background="{DynamicResource HoverBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" />
+                Command="{Binding FilterByMediumPriorityCommand}"
+                Margin="5"
+                Background="{DynamicResource ButtonBackground}"
+                Foreground="{DynamicResource ButtonForeground}"
+                BorderBrush="{DynamicResource AccentColor}" />
+
             <Button Content="Priority: High"
-                    Command="{Binding FilterByHighPriorityCommand}"
-                    Margin="5"
-                    Background="{DynamicResource HoverBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" />
+                Command="{Binding FilterByHighPriorityCommand}"
+                Margin="5"
+                Background="{DynamicResource ButtonBackground}"
+                Foreground="{DynamicResource ButtonForeground}"
+                BorderBrush="{DynamicResource AccentColor}" />
+
             <Button Content="Clear Filters"
-                    Command="{Binding ClearFilterCommand}"
-                    Margin="5"
-                    Background="{DynamicResource HoverBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" />
+                Command="{Binding ClearFilterCommand}"
+                Margin="5"
+                Background="{DynamicResource ButtonBackground}"
+                Foreground="{DynamicResource ButtonForeground}"
+                BorderBrush="{DynamicResource AccentColor}" />  
         </StackPanel>
 
 
@@ -147,61 +145,28 @@
                     <Path Data="{StaticResource SearchIcon}" Fill="White" Stretch="Fill" Width="15" />
                 </Viewbox>
             </Button>
-            
-            <!--Sorting Button-->
-            
 
             <!--List View For Colum 1-->
             <ListView Grid.Row="2"
-                      ItemsSource="{Binding FilteredTasks}" 
+                      ItemsSource="{Binding FilteredTasksView}" 
                       SelectedItem="{Binding SelectedTask}" 
-                      Background="#FF1E1E1E"
+                      Background="{DynamicResource HoverBackground}"
                       Margin="0 20"
-                      BorderBrush="Transparent"
-                      Foreground="{StaticResource ButtonForeground}">   
+                      BorderBrush="{DynamicResource WhiteText}"
+                      Foreground="{StaticResource ButtonForeground}">
                 <ListView.View>
                     <GridView>
-                        <!-- ID Column -->
-                        <GridViewColumn Header="ID">
-                            <GridViewColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Id">
-                                        <TextBlock Text="ID" />
-                                    </GridViewColumnHeader>
-                                </DataTemplate>
-                            </GridViewColumn.HeaderTemplate>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Id}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
+                        <!-- Task ID -->
+                        <GridViewColumn Header="ID" Width="20" DisplayMemberBinding="{Binding Id}"/>
+                        <!-- Task Title -->
+                        <GridViewColumn Header="Title" Width="60" DisplayMemberBinding="{Binding Title}"/>
 
-                        <!-- Title Column -->
-                        <GridViewColumn Header="Title">
-                            <GridViewColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Title">
-                                        <TextBlock Text="Title" />
-                                    </GridViewColumnHeader>
-                                </DataTemplate>
-                            </GridViewColumn.HeaderTemplate>
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <TextBlock Text="{Binding Title}" />
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-
-                        <!-- Priority Column -->
-                        <GridViewColumn Header="Priority">
-                            <GridViewColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="TaskPriority">
-                                        <TextBlock Text="Priority" />
-                                    </GridViewColumnHeader>
-                                </DataTemplate>
-                            </GridViewColumn.HeaderTemplate>
+                        
+                        <!-- Priority -->
+                        <GridViewColumn Width="100">
+                            <GridViewColumnHeader>
+                                <Button Content="Priority" Command="{Binding SortByPriorityCommand}" Background="#FFFDFDFD" Foreground="#FF00023C" BorderBrush="{x:Null}" />
+                            </GridViewColumnHeader>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
                                     <TextBlock Text="{Binding TaskPriority}" />
@@ -209,18 +174,15 @@
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
 
-                        <!-- Due Date Column -->
-                        <GridViewColumn Header="Due Date">
-                            <GridViewColumn.HeaderTemplate>
-                                <DataTemplate>
-                                    <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Duedate">
-                                        <TextBlock Text="Due Date" />
-                                    </GridViewColumnHeader>
-                                </DataTemplate>
-                            </GridViewColumn.HeaderTemplate>
+
+
+                        <!-- Task Status -->
+                        <GridViewColumn Header="Status" Width="50" DisplayMemberBinding="{Binding TaskState}"/>
+                        <!-- Task Due Date -->
+                        <GridViewColumn Header="Due Date" Width="100">
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Duedate}" />
+                                    <TextBlock Text="{Binding Duedate, StringFormat='{}{0:MM/dd/yyyy}'}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
@@ -334,24 +296,14 @@
 
 
         <!-- Logout Section -->
-        <StackPanel Grid.Column="3" Background="{DynamicResource SidebarBackground}" VerticalAlignment="Top" Margin="5,5,-43,0" RenderTransformOrigin="0.5,0.5" Height="50">
-            <StackPanel.Effect>
-                <DropShadowEffect/>
-            </StackPanel.Effect>
-            <StackPanel.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.572"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </StackPanel.RenderTransform>
+        <StackPanel Grid.Column="3" Background="{DynamicResource SidebarBackground}" VerticalAlignment="Top" Margin="5,5,0,0" Height="50">
             <Button Content="Logout"
-                    Command="{Binding LogoutCommand}"
-                    Margin="10"
-                    Background="{DynamicResource ButtonBackground}"
-                    Foreground="{DynamicResource ButtonForeground}"
-                    BorderBrush="{DynamicResource AccentColor}" Width="163" >
+            Command="{Binding LogoutCommand}"
+            Padding="10,5"
+            Background="{DynamicResource ButtonBackground}"
+            Foreground="{DynamicResource ButtonForeground}"
+            BorderBrush="{DynamicResource AccentColor}"
+            Width="150">
                 <Button.Effect>
                     <DropShadowEffect/>
                 </Button.Effect>

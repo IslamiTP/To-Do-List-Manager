@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using todolistmanagercsharp.ViewModels;
 
 namespace todolistmanagercsharp.Views
 {
@@ -22,6 +23,16 @@ namespace todolistmanagercsharp.Views
         public LoginView()
         {
             InitializeComponent();
+            DataContext = new LoginViewModel(); // Bind the ViewModel
+        }
+        
+        //Password Handle event for two way binding.
+        private void PasswordBox_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            if (DataContext is LoginViewModel viewModel)
+            {
+                viewModel.Password = ((PasswordBox)sender).Password;
+            }
         }
     }
 }

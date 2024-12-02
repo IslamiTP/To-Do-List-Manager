@@ -47,8 +47,8 @@
                          Background="{DynamicResource ListBackground}"
                          Foreground="{DynamicResource WhiteText}"
                          BorderBrush="{DynamicResource AccentColor}"
-                         BorderThickness="1" />
-
+                         BorderThickness="1"
+                         Text="{Binding Username, UpdateSourceTrigger=PropertyChanged}" />
                 <!-- Password -->
                 <TextBlock Text="Password:"
                            Margin="0,20,0,5"
@@ -59,7 +59,8 @@
                              Background="{DynamicResource ListBackground}"
                              Foreground="{DynamicResource WhiteText}"
                              BorderBrush="{DynamicResource AccentColor}"
-                             BorderThickness="1" />
+                             BorderThickness="1"
+                             PasswordChanged="PasswordBox_PasswordChanged" />
 
                 <!-- Login Button -->
                 <Button Content="Login"

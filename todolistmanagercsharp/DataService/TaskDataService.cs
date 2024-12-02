@@ -46,16 +46,16 @@ namespace todolistmanagercsharp.DataService
         // Task Loader
         public List<Task> LoadTasks()
         {
-            try
+            string fileContent = File.ReadAllText(_filePath);
+            var tasks = JsonConvert.DeserializeObject<List<Task>>(fileContent);
+            foreach (var task in tasks)
             {
-                string fileContent = File.ReadAllText(_filePath);
-                return JsonConvert.DeserializeObject<List<Task>>(fileContent);
+                if (string.IsNullOrEmpty(task.TaskPriority))
+                {
+                    task.TaskPriority = "None"; // Default to "None" if not set
+                }
             }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error loading tasks: {ex.Message}");
-                return new List<Task>();
-            }
+            return tasks;
         }
 
 

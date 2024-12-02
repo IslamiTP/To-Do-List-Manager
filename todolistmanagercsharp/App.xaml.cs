@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using todolistmanagercsharp.Views;
 
 namespace todolistmanagercsharp
 {
@@ -13,5 +14,13 @@ namespace todolistmanagercsharp
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            // Show the login view on application startup
+            var loginView = new LoginView();
+            loginView.Show();
+        }
     }
 }

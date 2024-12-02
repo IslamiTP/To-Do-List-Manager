@@ -4,20 +4,30 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
-using System.Runtime.CompilerServices;
+using System.Windows.Data;
 using System.Windows.Input;
 using todolistmanagercsharp.DataService;
 using todolistmanagercsharp.Models;
 using todolistmanagercsharp.Views;
 
-
-
-
 namespace todolistmanagercsharp.ViewModels
 {
-
     internal class TaskViewModel : INotifyPropertyChanged
     {
+
+
+
+
+        // Login Properties
+        private User _loggedInUser;
+
+        public TaskViewModel(User loggedInUser)
+        {
+            _loggedInUser = loggedInUser;
+            LoadTasks();
+        }
+
+
         // Task Properties
         public string Title { get; set; }
         public string Description { get; set; }
@@ -26,12 +36,9 @@ namespace todolistmanagercsharp.ViewModels
         public string TaskPriority { get; set; } = "None";
         public string TaskState { get; set; } = "None";
 
-
-
         public ObservableCollection<TaskChecklist> TaskChecklist { get; set; }
 
         private readonly TaskDataService _taskDataService;
-
 
         // Tasks Data
         private ObservableCollection<Task> _tasks;
@@ -45,10 +52,30 @@ namespace todolistmanagercsharp.ViewModels
             }
         }
 
+        // Task Filters
+        private ObservableCollection<Task> _filteredTasks;
+        public ObservableCollection<Task> FilteredTasks
+        {
+            get => _filteredTasks;
+            set
+            {
+                _filteredTasks = value;
+                OnPropertyChanged(nameof(FilteredTasks));
+            }
+        }
 
-
-        
-
+        private ICollectionView _filteredTasksView;
+        public ICollectionView FilteredTasksView
+        {
+            get
+            {
+                if (_filteredTasksView == null)
+                {
+                    _filteredTasksView = CollectionViewSource.GetDefaultView(FilteredTasks);
+                }
+                return _filteredTasksView;
+            }
+        }
 
         // Task Selection
         private Task _selectedTask;
@@ -62,9 +89,7 @@ namespace todolistmanagercsharp.ViewModels
             }
         }
 
-
         public event PropertyChangedEventHandler PropertyChanged;
-
 
         // Constructor  Task View Model
         public TaskViewModel()
@@ -80,18 +105,57 @@ namespace todolistmanagercsharp.ViewModels
             LoadTasks();
         }
 
-
-
         // Loading Tasks to List Viewer
         private void LoadTasks()
         {
-            var tasks = _taskDataService.LoadTasks();
-            Tasks = new ObservableCollection<Task>(tasks);
-            FilteredTasks = new ObservableCollection<Task>(tasks);
+            if (_loggedInUser == null)
+            {
+                Console.WriteLine("Error: Logged-in user is null.");
+                Tasks = new ObservableCollection<Task>(); // Initialize empty task list
+                FilteredTasks = new ObservableCollection<Task>();
+                return;
+            }
+
+            Console.WriteLine($"Logged-in user: {_loggedInUser.Username}");
+            Console.WriteLine($"Number of tasks: {_loggedInUser.Tasks.Count}");
+
+            // Load user-specific tasks
+            Tasks = new ObservableCollection<Task>(_loggedInUser.Tasks);
+            OnPropertyChanged(nameof(Tasks));
+
+            // FilteredTasks setup
+            FilteredTasks = new ObservableCollection<Task>(Tasks);
+            if (_filteredTasksView == null)
+            {
+                _filteredTasksView = CollectionViewSource.GetDefaultView(FilteredTasks);
+            }
+
+            RefreshFilteredTasksView();
         }
 
+        private void RefreshFilteredTasksView()
+        {
+            if (FilteredTasksView == null) return;
 
+            FilteredTasksView.Filter = task =>
+            {
+                var t = task as Task;
+                if (t == null) return false; // Replace `is not` with null check
 
+                // Apply search filter
+                var matchesSearch = string.IsNullOrWhiteSpace(SearchText) ||
+                                    (t.Title?.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) ?? -1) >= 0 ||
+                                    (t.Description?.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) ?? -1) >= 0;
+
+                // Apply priority filter
+                var matchesPriority = _priorityFilter == null || t.TaskPriority == _priorityFilter;
+
+                // Return true only if both filters match
+                return matchesSearch && matchesPriority;
+            };
+
+            FilteredTasksView.Refresh();
+        }
 
 
         // Add Task Command
@@ -115,8 +179,6 @@ namespace todolistmanagercsharp.ViewModels
             LoadTasks();
         }
 
-
-
         // ClearFields after input
         private void ClearFields()
         {
@@ -128,8 +190,6 @@ namespace todolistmanagercsharp.ViewModels
             OnPropertyChanged(nameof(Description));
             OnPropertyChanged(nameof(Duedate));
         }
-
-
 
         // Delete Task Command
         public ICommand DeleteTaskCommand => new RelayCommand(DeleteSelectedTask, CanDeleteTask);
@@ -154,20 +214,14 @@ namespace todolistmanagercsharp.ViewModels
             }
         }
 
-
-
         // Edit Task Command
-
-        // Opening Edt Task Window
         public ICommand EditTaskCommand => new RelayCommand(OpenEditTaskWindow, CanEditTask);
-        // Checks if Task is editable
+
         private bool CanEditTask()
         {
             return SelectedTask != null; // Only enable if a task is selected
         }
 
-
-        // Opening Edt Task Window
         private void OpenEditTaskWindow()
         {
             if (SelectedTask != null)
@@ -207,44 +261,10 @@ namespace todolistmanagercsharp.ViewModels
             }
         }
 
-        // Save Edited Task Command
-        public ICommand SaveEditedTaskCommand => new RelayCommand(() =>
-        {
-            Console.WriteLine("Executing task command...");
-            Console.WriteLine($"Title: {Title}");
-            Console.WriteLine($"Description: {Description}");
-            Console.WriteLine($"DueDate: {Duedate}");
-            Console.WriteLine($"TaskPriority: {TaskPriority}");
-            Console.WriteLine($"TaskState: {TaskState}");
-            Console.WriteLine($"Recurrence: {Recurrence}");
-
-            // Close the window after saving (if this is called within the EditTaskWindow's DataContext)
-            if (Application.Current.Windows.OfType<EditTaskWindow>().FirstOrDefault() is EditTaskWindow editTaskWindow)
-            {
-                editTaskWindow.Close();
-            }
-        });
-
-
-
-
-
-        // Task Filters
-        private ObservableCollection<Task> _filteredTasks;
-        public ObservableCollection<Task> FilteredTasks
-        {
-            get => _filteredTasks;
-            set
-            {
-                _filteredTasks = value;
-                OnPropertyChanged(nameof(FilteredTasks));
-            }
-        }
-
-
-
-        // Filtering Tasks By The Search Bar
+        // Filtering and Searching Logic
+        private string _priorityFilter = null; // Store the currently applied priority filter
         private string _searchText;
+
         public string SearchText
         {
             get => _searchText;
@@ -252,67 +272,43 @@ namespace todolistmanagercsharp.ViewModels
             {
                 _searchText = value;
                 OnPropertyChanged(nameof(SearchText));
-                FilterTasks(); // Update FilteredTasks when search text changes
+                RefreshFilteredTasksView(); // Combine search and priority filters
             }
         }
 
+        public ICommand FilterByHighPriorityCommand => new RelayCommand(() => ApplyFilterByPriority("High"));
+        public ICommand FilterByMediumPriorityCommand => new RelayCommand(() => ApplyFilterByPriority("Medium"));
+        public ICommand FilterByLowPriorityCommand => new RelayCommand(() => ApplyFilterByPriority("Low"));
+        public ICommand ClearFilterCommand => new RelayCommand(ClearFilter);
 
-
-        // Method to Filter Tasks
-        private void FilterTasks()
+        private void ApplyFilterByPriority(string priority)
         {
-            if (string.IsNullOrWhiteSpace(SearchText))
-            {
-                FilteredTasks = new ObservableCollection<Task>(Tasks); // No filter applied
-            }
-            else
-            {
-                FilteredTasks = new ObservableCollection<Task>(
-                    Tasks.Where(task =>
-                        (task.Title != null && task.Title.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0) ||
-                        (task.Description != null && task.Description.IndexOf(SearchText, StringComparison.OrdinalIgnoreCase) >= 0)
-                    ));
-            }
+            _priorityFilter = priority; // Set the priority filter
+            RefreshFilteredTasksView(); // Reapply the combined filter
         }
 
-
-        // Sorting Tasks By Column
-        public void SortTasks(string sortBy, ListSortDirection direction)
+        private void ClearFilter()
         {
-            IEnumerable<Task> sortedTasks;
-
-            switch (sortBy)
-            {
-                case "Id":
-                    sortedTasks = direction == ListSortDirection.Ascending
-                        ? FilteredTasks.OrderBy(task => task.Id)
-                        : FilteredTasks.OrderByDescending(task => task.Id);
-                    break;
-                case "Title":
-                    sortedTasks = direction == ListSortDirection.Ascending
-                        ? FilteredTasks.OrderBy(task => task.Title)
-                        : FilteredTasks.OrderByDescending(task => task.Title);
-                    break;
-                case "TaskPriority":
-                    sortedTasks = direction == ListSortDirection.Ascending
-                        ? FilteredTasks.OrderBy(task => task.TaskPriority)
-                        : FilteredTasks.OrderByDescending(task => task.TaskPriority);
-                    break;
-                case "Duedate":
-                    sortedTasks = direction == ListSortDirection.Ascending
-                        ? FilteredTasks.OrderBy(task => task.Duedate)
-                        : FilteredTasks.OrderByDescending(task => task.Duedate);
-                    break;
-                default:
-                    sortedTasks = FilteredTasks;
-                    break;
-            }
-
-            FilteredTasks = new ObservableCollection<Task>(sortedTasks);
+            _priorityFilter = null; // Clear the priority filter
+            RefreshFilteredTasksView(); // Reapply the combined filter
         }
 
 
-        // Property Changes
+        public ICommand LogoutCommand => new RelayCommand(Logout);
+
+        private void Logout()
+        {
+            _loggedInUser = null;
+
+            // Close the main window
+            var mainWindow = Application.Current.Windows.OfType<MainWindow>().FirstOrDefault();
+            mainWindow?.Close();
+
+            // Show the login view
+            var loginView = new LoginView();
+            loginView.Show();
+        }
+
         protected void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

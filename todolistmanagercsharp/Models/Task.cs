@@ -20,5 +20,25 @@ namespace todolistmanagercsharp.Models
        
 
         public ObservableCollection<TaskChecklist> TaskChecklist { get; set; }
+
+
+        public int PriorityValue
+        {
+            get
+            {
+                switch (TaskPriority)
+                {
+                    case "Low":
+                        return 1;
+                    case "Medium":
+                        return 2;
+                    case "High":
+                        return 3;
+                    default:
+                        return 0; // Default for "None" or invalid values
+                }
+            }
+        }
+
     }
 }

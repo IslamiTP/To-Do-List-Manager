@@ -60,6 +60,10 @@
     </ApplicationDefinition>
     <Compile Include="Converters\NullToBooleanConverter.cs" />
     <Compile Include="DataService\TaskDataService.cs" />
+    <Compile Include="DataService\UserDataServices.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Utils\GridViewSort.cs" />
+    <Compile Include="ViewModels\LoginViewModel.cs" />
     <Compile Include="ViewModels\TaskViewModel.cs" />
     <Compile Include="Views\EditTaskWindow.xaml.cs">
       <DependentUpon>EditTaskWindow.xaml</DependentUpon>
