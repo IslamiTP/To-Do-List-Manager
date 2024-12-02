@@ -3,28 +3,24 @@
   "WorkspaceRootPath": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\ViewModels\\TaskViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\ViewModels\\TaskViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\views\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\viewmodels\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\viewmodels\\taskviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\DataService\\TaskDataService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\DataService\\TaskDataService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\views\\edittaskwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\views\\edittaskwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\viewmodels\\relaycommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\views\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|c:\\users\\endri\\documents\\github\\todolistmanagercsharp\\todolistmanagercsharp\\views\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{60B3142D-027A-477B-B14E-711A30E41CA1}|todolistmanagercsharp\\todolistmanagercsharp.csproj|solutionrelative:todolistmanagercsharp\\views\\mainwindow.xaml||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,11 +30,11 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "TaskDataService.cs",
               "DocumentMoniker": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\DataService\\TaskDataService.cs",
               "RelativeDocumentMoniker": "todolistmanagercsharp\\DataService\\TaskDataService.cs",
@@ -47,18 +43,17 @@
               "ViewState": "AgIAAEcAAAAAAAAAAAAIwF0AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T04:00:58.676Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "TaskViewModel.cs",
               "DocumentMoniker": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\ViewModels\\TaskViewModel.cs",
               "RelativeDocumentMoniker": "todolistmanagercsharp\\ViewModels\\TaskViewModel.cs",
               "ToolTip": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\ViewModels\\TaskViewModel.cs",
               "RelativeToolTip": "todolistmanagercsharp\\ViewModels\\TaskViewModel.cs",
-              "ViewState": "AgIAAN8AAAAAAAAAAAAIwPsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAPIAAAAAAAAAAAAqwBIBAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T02:34:12.266Z",
               "IsPinned": true,
@@ -66,13 +61,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "RelayCommand.cs",
               "DocumentMoniker": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\ViewModels\\RelayCommand.cs",
               "RelativeDocumentMoniker": "todolistmanagercsharp\\ViewModels\\RelayCommand.cs",
               "ToolTip": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\ViewModels\\RelayCommand.cs",
               "RelativeToolTip": "todolistmanagercsharp\\ViewModels\\RelayCommand.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAowEYAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAADQAAAAAAAAAAAAcwEYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-01T19:58:33.621Z",
               "IsPinned": true,
@@ -80,7 +75,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\Views\\MainWindow.xaml",
               "RelativeDocumentMoniker": "todolistmanagercsharp\\Views\\MainWindow.xaml",
@@ -101,48 +96,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "EditTaskWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\Views\\EditTaskWindow.xaml",
-              "RelativeDocumentMoniker": "todolistmanagercsharp\\Views\\EditTaskWindow.xaml",
-              "ToolTip": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\Views\\EditTaskWindow.xaml",
-              "RelativeToolTip": "todolistmanagercsharp\\Views\\EditTaskWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-01T21:03:17.736Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "Orientation": 0,
-      "VerticalTabListWidth": 256,
-      "FloatingWindowState": {
-        "Id": "6bf45ad3-054e-4b6f-9fe8-9a3122db6de7",
-        "Display": 1,
-        "X": 45,
-        "Y": 95,
-        "Width": 800,
-        "Height": 600,
-        "WindowState": 2
-      },
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 0,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\Views\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "todolistmanagercsharp\\Views\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\Views\\MainWindow.xaml",
-              "RelativeToolTip": "todolistmanagercsharp\\Views\\MainWindow.xaml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAArwCIAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-12-01T20:59:35.33Z",
+              "DocumentIndex": 0,
+              "Title": "MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\Views\\MainWindow.xaml.cs",
+              "RelativeDocumentMoniker": "todolistmanagercsharp\\Views\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\endri\\Documents\\GitHub\\todolistmanagercsharp\\todolistmanagercsharp\\Views\\MainWindow.xaml.cs",
+              "RelativeToolTip": "todolistmanagercsharp\\Views\\MainWindow.xaml.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAwDYAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-02T00:05:26.091Z",
               "EditorCaption": ""
             }
           ]

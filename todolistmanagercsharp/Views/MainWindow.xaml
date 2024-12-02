@@ -147,30 +147,80 @@
                     <Path Data="{StaticResource SearchIcon}" Fill="White" Stretch="Fill" Width="15" />
                 </Viewbox>
             </Button>
+            
+            <!--Sorting Button-->
+            
 
             <!--List View For Colum 1-->
             <ListView Grid.Row="2"
                       ItemsSource="{Binding FilteredTasks}" 
                       SelectedItem="{Binding SelectedTask}" 
-                      Background="{DynamicResource HoverBackground}"
+                      Background="#FF1E1E1E"
                       Margin="0 20"
-                      BorderBrush="{DynamicResource WhiteText}"
-                      Foreground="{StaticResource ButtonForeground}">
+                      BorderBrush="Transparent"
+                      Foreground="{StaticResource ButtonForeground}">   
                 <ListView.View>
                     <GridView>
-                        <!-- Task ID -->
-                        <GridViewColumn Header="ID" Width="20" DisplayMemberBinding="{Binding Id}" />
-                        <!-- Task Title -->
-                        <GridViewColumn Header="Title" Width="100" DisplayMemberBinding="{Binding Title}" />
-                        <!-- Task Priority -->
-                        <GridViewColumn Header="Priority" Width="50" DisplayMemberBinding="{Binding TaskPriority}" />
-                        <!-- Task Status -->
-                        <GridViewColumn Header="Status" Width="50" DisplayMemberBinding="{Binding TaskState}" />
-                        <!-- Task Due Date -->
-                        <GridViewColumn Header="Due Date" Width="100">
+                        <!-- ID Column -->
+                        <GridViewColumn Header="ID">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Id">
+                                        <TextBlock Text="ID" />
+                                    </GridViewColumnHeader>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
                             <GridViewColumn.CellTemplate>
                                 <DataTemplate>
-                                    <TextBlock Text="{Binding Duedate, StringFormat='{}{0:MM/dd/yyyy}'}" />
+                                    <TextBlock Text="{Binding Id}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Title Column -->
+                        <GridViewColumn Header="Title">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Title">
+                                        <TextBlock Text="Title" />
+                                    </GridViewColumnHeader>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Title}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Priority Column -->
+                        <GridViewColumn Header="Priority">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="TaskPriority">
+                                        <TextBlock Text="Priority" />
+                                    </GridViewColumnHeader>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding TaskPriority}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+
+                        <!-- Due Date Column -->
+                        <GridViewColumn Header="Due Date">
+                            <GridViewColumn.HeaderTemplate>
+                                <DataTemplate>
+                                    <GridViewColumnHeader Click="GridViewColumnHeader_Click" Tag="Duedate">
+                                        <TextBlock Text="Due Date" />
+                                    </GridViewColumnHeader>
+                                </DataTemplate>
+                            </GridViewColumn.HeaderTemplate>
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Duedate}" />
                                 </DataTemplate>
                             </GridViewColumn.CellTemplate>
                         </GridViewColumn>
