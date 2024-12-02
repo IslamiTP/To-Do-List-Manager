@@ -73,5 +73,3 @@ Have a question or need help? Reach out to us on Discord or open an issue on Git
 
 Happy task managing! 🎉
 ```
-
-Feel free to customize this `README.md` further based on your preferences or specific requirements for your project. Let me know if you'd like additional changes! 🚀
