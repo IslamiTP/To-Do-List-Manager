@@ -27,6 +27,9 @@ namespace todolistmanagercsharp.ViewModels
             _userDataService = new UserDataService(); // User management service
         }
 
+        /// <summary>
+        /// Login View Method 
+        /// </summary>
         private void Login()
         {
             if (string.IsNullOrWhiteSpace(Username) || string.IsNullOrWhiteSpace(Password))
@@ -38,6 +41,9 @@ namespace todolistmanagercsharp.ViewModels
             LoggedInUser = _userDataService.Authenticate(Username, Password);
             if (LoggedInUser != null)
             {
+                Console.WriteLine($"Logged-in user: {LoggedInUser.Username}");
+                Console.WriteLine($"Number of tasks: {LoggedInUser.Tasks?.Count ?? 0}");
+
                 MessageBox.Show($"Welcome, {LoggedInUser.Username}!", "Login Successful", MessageBoxButton.OK, MessageBoxImage.Information);
 
                 // Open the main window with user-specific data
@@ -52,10 +58,15 @@ namespace todolistmanagercsharp.ViewModels
             }
             else
             {
+                Console.WriteLine("Invalid username or password.");
                 MessageBox.Show("Invalid username or password.", "Login Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
+
+        /// <summary>
+        /// Account Registration Method
+        /// </summary>
         private void Register()
         {
             Console.WriteLine($"Register invoked: Username={Username}, Password={Password}");

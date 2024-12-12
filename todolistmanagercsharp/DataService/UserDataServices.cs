@@ -33,17 +33,29 @@ namespace todolistmanagercsharp.DataService
             LoadUsers();
         }
 
+        /// <summary>
+        /// Load User Data
+        /// </summary>
         private void LoadUsers()
         {
             var fileContent = File.ReadAllText(_filePath);
             _users = JsonConvert.DeserializeObject<List<User>>(fileContent) ?? new List<User>();
         }
 
+        /// <summary>
+        /// Saves User Data
+        /// </summary>
         private void SaveUsers()
         {
             File.WriteAllText(_filePath, JsonConvert.SerializeObject(_users, Formatting.Indented));
         }
 
+        /// <summary>
+        /// Users Authentication 
+        /// </summary>
+        /// <param name="username"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
         public User Authenticate(string username, string password)
         {
             return _users.FirstOrDefault(u => u.Username == username && u.Password == password);

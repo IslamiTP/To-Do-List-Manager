@@ -26,17 +26,13 @@ namespace todolistmanagercsharp.Models
         {
             get
             {
-                switch (TaskPriority)
+                return TaskPriority switch
                 {
-                    case "Low":
-                        return 1;
-                    case "Medium":
-                        return 2;
-                    case "High":
-                        return 3;
-                    default:
-                        return 0; // Default for "None" or invalid values
-                }
+                    "Low" => 1,
+                    "Medium" => 2,
+                    "High" => 3,
+                    _ => 0 // Default for "None" or invalid values
+                };
             }
         }
 

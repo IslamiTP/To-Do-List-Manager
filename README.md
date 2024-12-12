@@ -1,75 +1,54 @@
-# 📋 Task Manager
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-Welcome to **Task Manager**! This application allows you to organize, manage, and track your tasks effectively. With support for user authentication and personalized task lists, it's the perfect tool to stay productive.
+# C# To-Do List Manager
 
----
+**Techstack**: C#, File I/O, JSON, Plain Text
 
-## 🚀 Features
+- Created a command-line application that provides task management capabilities, allowing users to add, view, update, delete, and search tasks using unique identifiers, with each task featuring a title, description, due date, priority, and status.
+- Developed robust task ID generation and error checking to ensure ID uniqueness and prevent conflicts.
+- Incorporated file-based persistence to store task data between sessions and retrieve it upon startup.
+- Designed with various filters and search options, enabling users to efficiently locate and manage tasks.
 
-- **User Authentication**
-  - Register and log in with your account.
-  - Each user gets their own personalized task list.
+**Features**:
+- **Add a Task**: Allows users to enter details such as ID, title, description, due date, priority, and status.
+- **View Tasks**: Displays tasks with filtering options based on ID, status, priority, or due date.
+- **Delete a Task**: Facilitates task deletion by unique identifier.
+- **Update a Task**: Enables task updates for status and due date modifications.
+- **Search Tasks**: Supports keyword search for task titles or descriptions.
+- **Persistence**: Saves and loads tasks in a file format for consistent data retention between sessions.
 
-- **Task Management**
-  - Add, edit, and delete tasks effortlessly.
-  - Manage tasks with attributes such as:
-    - Title, Description, Due Date, Priority, Status, and Recurrence.
 
-- **Search and Filter**
-  - Search for tasks by keywords in the title or description.
-  - Filter tasks by priority (`Low`, `Medium`, `High`).
+## Getting Started
 
-- **Data Persistence**
-  - All tasks and user data are saved securely to your system.
-  - Supports multiple users with separate data storage.
+First, run the development server:
 
----
-
-## 🛠️ How to Use
-
-1. **Log In or Register**
-   - Launch the application.
-   - Register for a new account or log in with an existing one.
-
-2. **Manage Tasks**
-   - View your task list in the main interface.
-   - Add new tasks or edit existing ones.
-
-3. **Search and Filter**
-   - Use the search bar to find tasks quickly.
-   - Apply filters to focus on specific priorities.
-
-4. **Log Out**
-   - Securely log out and return to the login screen.
-
----
-
-## 🔧 Requirements
-
-- **Operating System:** Windows 10 or higher.
-- **Framework:** .NET Core 5.0 or later.
-- **Dependencies:** Newtonsoft.Json (for data serialization).
-
----
-
-## 🛠️ Technologies Used
-
-- **Frontend:** WPF (Windows Presentation Foundation)
-- **Backend:** C# (.NET)
-- **Data Storage:** JSON files
-- **Design Patterns:** MVVM (Model-View-ViewModel)
-
----
-
-## 🎉 Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/IslamiTP/To-Do-List-Manager-CSharp.git
-
-## 📞 Support
-
-Have a question or need help? Reach out to us on Discord or open an issue on GitHub!
-
-Happy task managing! 🎉
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+
+This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Deploy on Vercel
+
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

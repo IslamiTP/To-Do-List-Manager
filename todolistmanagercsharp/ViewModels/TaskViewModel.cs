@@ -15,9 +15,6 @@ namespace todolistmanagercsharp.ViewModels
     internal class TaskViewModel : INotifyPropertyChanged
     {
 
-
-
-
         // Login Properties
         private User _loggedInUser;
 
@@ -110,27 +107,34 @@ namespace todolistmanagercsharp.ViewModels
         {
             if (_loggedInUser == null)
             {
+                // If the logged-in user is null, log the error and clear tasks.
                 Console.WriteLine("Error: Logged-in user is null.");
-                Tasks = new ObservableCollection<Task>(); // Initialize empty task list
-                FilteredTasks = new ObservableCollection<Task>();
+                Tasks = new ObservableCollection<Task>(); // Initialize with an empty list
+                FilteredTasks = new ObservableCollection<Task>(); // Also clear the filtered tasks
                 return;
             }
 
+            // Log the username and number of tasks for debugging
             Console.WriteLine($"Logged-in user: {_loggedInUser.Username}");
-            Console.WriteLine($"Number of tasks: {_loggedInUser.Tasks.Count}");
+            Console.WriteLine($"Number of tasks: {_loggedInUser.Tasks?.Count ?? 0}");
 
-            // Load user-specific tasks
-            Tasks = new ObservableCollection<Task>(_loggedInUser.Tasks);
-            OnPropertyChanged(nameof(Tasks));
+            // If the user has tasks, bind them to the Tasks property.
+            Tasks = new ObservableCollection<Task>(_loggedInUser.Tasks ?? new ObservableCollection<Task>());
+            OnPropertyChanged(nameof(Tasks)); // Notify UI of the change.
 
-            // FilteredTasks setup
+            // FilteredTasks setup: Initialize FilteredTasks based on Tasks.
             FilteredTasks = new ObservableCollection<Task>(Tasks);
             if (_filteredTasksView == null)
             {
+                // Initialize the collection view if it's null
                 _filteredTasksView = CollectionViewSource.GetDefaultView(FilteredTasks);
             }
 
-            RefreshFilteredTasksView();
+            // Apply any filters you might have defined (this will depend on your application)
+            RefreshFilteredTasksView(); // This will reapply the filter logic.
+
+            // Log the final filtered task count for debugging purposes
+            Console.WriteLine($"Filtered task count: {FilteredTasks.Count}");
         }
 
         private void RefreshFilteredTasksView()
@@ -308,6 +312,29 @@ namespace todolistmanagercsharp.ViewModels
             var loginView = new LoginView();
             loginView.Show();
         }
+
+
+        // Sorting Tasks by Priority
+        public ICommand SortByPriorityCommand => new RelayCommand(SortTasksByPriority);
+
+        private void SortTasksByPriority()
+        {
+            Console.WriteLine("SortTasksByPriority triggered.");
+
+            if (FilteredTasksView == null) return;
+
+            // Toggle sort direction
+            var currentSort = FilteredTasksView.SortDescriptions.FirstOrDefault();
+            var newDirection = currentSort.Direction == ListSortDirection.Ascending
+                ? ListSortDirection.Descending
+                : ListSortDirection.Ascending;
+
+            FilteredTasksView.SortDescriptions.Clear();
+            FilteredTasksView.SortDescriptions.Add(new SortDescription("PriorityValue", newDirection));
+
+            Console.WriteLine($"Tasks sorted by priority value: {newDirection}");
+        }
+
 
         protected void OnPropertyChanged(string propertyName)
         {
