@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using todolistmanagercsharp.DataService;
 using todolistmanagercsharp.ViewModels;
 
 namespace todolistmanagercsharp
@@ -25,7 +26,7 @@ namespace todolistmanagercsharp
         {
             InitializeComponent();
 
-            this.DataContext = new TaskViewModel();
+            this.DataContext = new MainWindowViewModel();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
